@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetKrewIndexRepoName(t *testing.T) {
+func TestGetDevctlIndexRepoName(t *testing.T) {
 	testcases := []struct {
 		name     string
 		setup    func()
@@ -40,13 +40,13 @@ func TestGetKrewIndexRepoName(t *testing.T) {
 				tc.setup()
 			}
 
-			actual := GetKrewIndexRepoName()
+			actual := GetDevctlIndexRepoName()
 			assert.Equal(t, tc.expected, actual)
 		})
 	}
 }
 
-func TestGetKrewIndexRepoOwner(t *testing.T) {
+func TestGetDevctlIndexRepoOwner(t *testing.T) {
 	testcases := []struct {
 		name     string
 		setup    func()
@@ -79,7 +79,7 @@ func TestGetKrewIndexRepoOwner(t *testing.T) {
 				tc.setup()
 			}
 
-			actual := GetKrewIndexRepoOwner()
+			actual := GetDevctlIndexRepoOwner()
 			assert.Equal(t, tc.expected, actual)
 		})
 	}

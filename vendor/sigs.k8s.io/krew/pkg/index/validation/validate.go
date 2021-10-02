@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package validation implements functions to validate Krew plugin types.
+// Package validation implements functions to validate Devctl plugin types.
 package validation
 
 import (

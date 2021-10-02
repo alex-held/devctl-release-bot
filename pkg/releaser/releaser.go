@@ -13,16 +13,16 @@ import (
 
 //Releaser is what opens PR
 type Releaser struct {
-	Token                         string
-	TokenEmail                    string
-	TokenUserHandle               string
-	TokenUsername                 string
-	UpstreamKrewIndexRepo         string
-	UpstreamKrewIndexRepoOwner    string
-	UpstreamKrewIndexRepoCloneURL string
-	LocalKrewIndexRepo            string
-	LocalKrewIndexRepoOwner       string
-	LocalKrewIndexRepoCloneURL    string
+	Token                           string
+	TokenEmail                      string
+	TokenUserHandle                 string
+	TokenUsername                   string
+	UpstreamDevctlIndexRepo         string
+	UpstreamDevctlIndexRepoOwner    string
+	UpstreamDevctlIndexRepoCloneURL string
+	LocalDevctlIndexRepo            string
+	LocalDevctlIndexRepoOwner       string
+	LocalDevctlIndexRepoCloneURL    string
 }
 
 func getCloneURL(owner, repo string) string {
@@ -31,7 +31,7 @@ func getCloneURL(owner, repo string) string {
 
 //TODO: get email, userhandle, name from token
 func getUserDetails(token string) (string, string, string) {
-	return "devctl-release-bot", "Krew Release Bot", "devctlpluginreleasebot@gmail.com"
+	return "devctl-release-bot", "Devctl Release Bot", "devctlpluginreleasebot@gmail.com"
 }
 
 //New returns new releaser object
@@ -39,16 +39,16 @@ func New(ghToken string) *Releaser {
 	tokenUserHandle, tokenUsername, tokenEmail := getUserDetails(ghToken)
 
 	return &Releaser{
-		Token:                         ghToken,
-		TokenEmail:                    tokenEmail,
-		TokenUserHandle:               tokenUserHandle,
-		TokenUsername:                 tokenUsername,
-		UpstreamKrewIndexRepo:         devctl.GetKrewIndexRepoName(),
-		UpstreamKrewIndexRepoOwner:    devctl.GetKrewIndexRepoOwner(),
-		UpstreamKrewIndexRepoCloneURL: getCloneURL(devctl.GetKrewIndexRepoOwner(), devctl.GetKrewIndexRepoName()),
-		LocalKrewIndexRepo:            devctl.GetKrewIndexRepoName(),
-		LocalKrewIndexRepoOwner:       tokenUserHandle,
-		LocalKrewIndexRepoCloneURL:    "https://github.com/alex-held/devctl-index.git",
+		Token:                           ghToken,
+		TokenEmail:                      tokenEmail,
+		TokenUserHandle:                 tokenUserHandle,
+		TokenUsername:                   tokenUsername,
+		UpstreamDevctlIndexRepo:         devctl.GetDevctlIndexRepoName(),
+		UpstreamDevctlIndexRepoOwner:    devctl.GetDevctlIndexRepoOwner(),
+		UpstreamDevctlIndexRepoCloneURL: getCloneURL(devctl.GetDevctlIndexRepoOwner(), devctl.GetDevctlIndexRepoName()),
+		LocalDevctlIndexRepo:            devctl.GetDevctlIndexRepoName(),
+		LocalDevctlIndexRepoOwner:       tokenUserHandle,
+		LocalDevctlIndexRepoCloneURL:    "https://github.com/alex-held/devctl-index.git",
 	}
 }
 

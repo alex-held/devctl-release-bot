@@ -29,9 +29,9 @@ const (
 
 //CloneRepos clones the repo
 func (r *Releaser) cloneRepos(dir string, request *source.ReleaseRequest) (*ugit.Repository, error) {
-	logrus.Infof("Cloning %s", r.UpstreamKrewIndexRepoCloneURL)
+	logrus.Infof("Cloning %s", r.UpstreamDevctlIndexRepoCloneURL)
 	repo, err := ugit.PlainClone(dir, false, &ugit.CloneOptions{
-		URL:           r.UpstreamKrewIndexRepoCloneURL,
+		URL:           r.UpstreamDevctlIndexRepoCloneURL,
 		Progress:      os.Stdout,
 		ReferenceName: plumbing.Master,
 		SingleBranch:  true,
@@ -42,10 +42,10 @@ func (r *Releaser) cloneRepos(dir string, request *source.ReleaseRequest) (*ugit
 		return nil, err
 	}
 
-	logrus.Infof("Adding remote %s at %s", OriginNameLocal, r.LocalKrewIndexRepoCloneURL)
+	logrus.Infof("Adding remote %s at %s", OriginNameLocal, r.LocalDevctlIndexRepoCloneURL)
 	_, err = repo.CreateRemote(&config.RemoteConfig{
 		Name: OriginNameLocal,
-		URLs: []string{r.LocalKrewIndexRepoCloneURL},
+		URLs: []string{r.LocalDevctlIndexRepoCloneURL},
 	})
 	if err != nil {
 		return nil, err
@@ -145,8 +145,8 @@ func (r *Releaser) submitPR(request *source.ReleaseRequest) (string, error) {
 
 	pr, _, err := client.PullRequests.Create(
 		context.TODO(),
-		r.UpstreamKrewIndexRepoOwner,
-		r.UpstreamKrewIndexRepo,
+		r.UpstreamDevctlIndexRepoOwner,
+		r.UpstreamDevctlIndexRepo,
 		prr,
 	)
 	if err != nil {
