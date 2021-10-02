@@ -82,6 +82,7 @@ github.com/sergi/go-diff/diffmatchpatch
 ## explicit
 github.com/sirupsen/logrus
 # github.com/spf13/afero v1.6.0
+## explicit
 github.com/spf13/afero
 github.com/spf13/afero/mem
 # github.com/spf13/cobra v1.2.1

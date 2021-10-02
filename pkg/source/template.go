@@ -7,6 +7,7 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/alex-held/devctl-release-bot/pkg/devctl"
 	"github.com/sirupsen/logrus"
 )
 
