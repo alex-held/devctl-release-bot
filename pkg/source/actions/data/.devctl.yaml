@@ -1,4 +1,4 @@
-apiVersion: devctl.googlecontainertools.github.com/v1alpha2
+apiVersion: alexheld.io/devctl/v1alpha1
 kind: Plugin
 metadata:
   name: my-awesome-plugin

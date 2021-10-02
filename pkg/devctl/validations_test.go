@@ -32,7 +32,7 @@ func TestGetPluginName(t *testing.T) {
 			name:          "invalid plugin file",
 			file:          "data/invalid-plugin-file.yaml",
 			expectedName:  "",
-			expectedError: "error unmarshaling JSON: while decoding JSON: json: cannot unmarshal string into Go value of type index.Plugin",
+			expectedError: "failed to decode plugin manifest: error unmarshaling JSON: while decoding JSON: json: cannot unmarshal string into Go value of type spec.Plugin",
 		},
 	}
 
