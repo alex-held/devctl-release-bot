@@ -7,5 +7,5 @@ if [ "$version" == "" ]; then
 fi
 
 ## push for github actions
-docker build . -t rajatjindal/krew-release-bot:$version -f Dockerfile
-docker push rajatjindal/krew-release-bot:$version
+docker build . -t alexheld/devctl-release-bot:$version -f Dockerfile
+docker push alexheld/devctl-release-bot:$version

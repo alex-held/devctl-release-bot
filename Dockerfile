@@ -1,12 +1,12 @@
-FROM golang:1.16.5-alpine3.13 as builder
+FROM golang as builder
 
-WORKDIR /go/src/github.com/rajatjindal/krew-release-bot
+WORKDIR /go/src/github.com/alex-held/devctl-release-bot
 COPY . .
 
 RUN CGO_ENABLED=0 GOOS=linux go test -mod vendor ./... -cover
-RUN CGO_ENABLED=0 GOOS=linux go build -mod vendor --ldflags "-s -w" -o krew-release-bot cmd/action/*
+RUN CGO_ENABLED=0 GOOS=linux go build -mod vendor --ldflags "-s -w" -o devctl-release-bot cmd/action/*
 
-FROM alpine:3.13.5
+FROM alpine
 
 RUN mkdir -p /home/app
 
@@ -18,6 +18,6 @@ WORKDIR /home/app
 
 USER app
 
-COPY --from=builder /go/src/github.com/rajatjindal/krew-release-bot/krew-release-bot /usr/local/bin/
+COPY --from=builder /go/src/github.com/alex-held/devctl-release-bot/devctl-release-bot /usr/local/bin/
 
-CMD ["krew-release-bot", "action"]
+CMD ["devctl-release-bot", "action"]
