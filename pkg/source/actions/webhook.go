@@ -7,9 +7,9 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	"github.com/alex-held/devctl-release-bot/pkg/source"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/google/go-github/v29/github"
-	"github.com/rajatjindal/krew-release-bot/pkg/source"
 )
 
 //GithubActions is github webhook handler

@@ -7,7 +7,6 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/rajatjindal/krew-release-bot/pkg/krew"
 	"github.com/sirupsen/logrus"
 )
 
@@ -33,14 +32,14 @@ func indent(spaces int, v string) string {
 	return strings.TrimSpace(pad + strings.Replace(v, "\n", "\n"+pad, -1))
 }
 
-//ProcessTemplate process the .krew.yaml template for the release request
+//ProcessTemplate process the .devctl.yaml template for the release request
 func ProcessTemplate(templateFile string, values interface{}) (string, []byte, error) {
 	spec, err := RenderTemplate(templateFile, values)
 	if err != nil {
 		return "", nil, err
 	}
 
-	pluginName, err := krew.GetPluginName(spec)
+	pluginName, err := devctl.GetPluginName(spec)
 	if err != nil {
 		return "", nil, InvalidPluginSpecError{
 			err:  fmt.Sprintf("failed to get plugin name from processed template.\nerr: %s", err.Error()),
@@ -51,7 +50,7 @@ func ProcessTemplate(templateFile string, values interface{}) (string, []byte, e
 	return pluginName, spec, nil
 }
 
-//RenderTemplate process the .krew.yaml template for the release request
+//RenderTemplate process the .devctl.yaml template for the release request
 func RenderTemplate(templateFile string, values interface{}) ([]byte, error) {
 	logrus.Debugf("started processing of template %s", templateFile)
 	name := path.Base(templateFile)

@@ -1,4 +1,4 @@
-apiVersion: krew.googlecontainertools.github.com/v1alpha2
+apiVersion: devctl.googlecontainertools.github.com/v1alpha2
 kind: Plugin
 metadata:
   name: my-awesome-plugin

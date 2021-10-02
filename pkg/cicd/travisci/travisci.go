@@ -66,10 +66,10 @@ func (p *Provider) GetWorkDirectory() string {
 
 //GetTemplateFile returns the template file
 func (p *Provider) GetTemplateFile() string {
-	templateFile := getInputForAction("krew_template_file")
+	templateFile := getInputForAction("devctl_template_file")
 	if templateFile != "" {
 		return filepath.Join(p.GetWorkDirectory(), templateFile)
 	}
 
-	return filepath.Join(p.GetWorkDirectory(), ".krew.yaml")
+	return filepath.Join(p.GetWorkDirectory(), ".devctl.yaml")
 }

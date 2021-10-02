@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/alex-held/devctl-release-bot/pkg/devctl"
+	"github.com/alex-held/devctl-release-bot/pkg/source/actions"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/pkg/errors"
-	"github.com/rajatjindal/krew-release-bot/pkg/krew"
-	"github.com/rajatjindal/krew-release-bot/pkg/source/actions"
 )
 
 //Releaser is what opens PR
@@ -31,7 +31,7 @@ func getCloneURL(owner, repo string) string {
 
 //TODO: get email, userhandle, name from token
 func getUserDetails(token string) (string, string, string) {
-	return "krew-release-bot", "Krew Release Bot", "krewpluginreleasebot@gmail.com"
+	return "devctl-release-bot", "Krew Release Bot", "devctlpluginreleasebot@gmail.com"
 }
 
 //New returns new releaser object
@@ -43,12 +43,12 @@ func New(ghToken string) *Releaser {
 		TokenEmail:                    tokenEmail,
 		TokenUserHandle:               tokenUserHandle,
 		TokenUsername:                 tokenUsername,
-		UpstreamKrewIndexRepo:         krew.GetKrewIndexRepoName(),
-		UpstreamKrewIndexRepoOwner:    krew.GetKrewIndexRepoOwner(),
-		UpstreamKrewIndexRepoCloneURL: getCloneURL(krew.GetKrewIndexRepoOwner(), krew.GetKrewIndexRepoName()),
-		LocalKrewIndexRepo:            krew.GetKrewIndexRepoName(),
+		UpstreamKrewIndexRepo:         devctl.GetKrewIndexRepoName(),
+		UpstreamKrewIndexRepoOwner:    devctl.GetKrewIndexRepoOwner(),
+		UpstreamKrewIndexRepoCloneURL: getCloneURL(devctl.GetKrewIndexRepoOwner(), devctl.GetKrewIndexRepoName()),
+		LocalKrewIndexRepo:            devctl.GetKrewIndexRepoName(),
 		LocalKrewIndexRepoOwner:       tokenUserHandle,
-		LocalKrewIndexRepoCloneURL:    "https://github.com/krew-release-bot/krew-index.git",
+		LocalKrewIndexRepoCloneURL:    "https://github.com/alex-held/devctl-index.git",
 	}
 }
 

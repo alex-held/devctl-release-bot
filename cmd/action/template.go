@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/rajatjindal/krew-release-bot/pkg/source"
+	"github.com/alex-held/devctl-release-bot/pkg/source"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
@@ -21,7 +21,7 @@ func init() {
 	templateCmd.Flags().StringVar(&tagName, "tag", "", "tag name to use for templating")
 	templateCmd.MarkFlagRequired("tag")
 
-	templateCmd.Flags().StringVar(&templateFile, "template-file", ".krew.yaml", "template file to use for templating")
+	templateCmd.Flags().StringVar(&templateFile, "template-file", ".devctl.yaml", "template file to use for templating")
 	templateCmd.MarkFlagRequired("template-file")
 
 	templateCmd.Flags().BoolVar(&debug, "debug", false, "print debug level logs")
@@ -29,7 +29,7 @@ func init() {
 
 var templateCmd = &cobra.Command{
 	Use:   "template",
-	Short: "template helps validate the krew index template file without going through github actions workflow",
+	Short: "template helps validate the devctl index template file without going through github actions workflow",
 	Run: func(cmd *cobra.Command, args []string) {
 		if debug {
 			logrus.SetLevel(logrus.DebugLevel)

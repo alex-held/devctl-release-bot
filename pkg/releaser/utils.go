@@ -7,14 +7,14 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/rajatjindal/krew-release-bot/pkg/krew"
-	"github.com/rajatjindal/krew-release-bot/pkg/source"
+	devctl "github.com/alex-held/devctl-release-bot/pkg/devctl"
+	"github.com/alex-held/devctl-release-bot/pkg/source"
 	"github.com/sirupsen/logrus"
 )
 
 //Release releases
 func (releaser *Releaser) Release(request *source.ReleaseRequest) (string, error) {
-	tempdir, err := ioutil.TempDir("", "krew-index-")
+	tempdir, err := ioutil.TempDir("", "devctl-index-")
 	if err != nil {
 		return "", err
 	}
@@ -26,7 +26,7 @@ func (releaser *Releaser) Release(request *source.ReleaseRequest) (string, error
 		return "", err
 	}
 
-	newIndexFile, err := ioutil.TempFile("", "krew-")
+	newIndexFile, err := ioutil.TempFile("", "devctl-")
 	if err != nil {
 		return "", err
 	}
@@ -37,9 +37,9 @@ func (releaser *Releaser) Release(request *source.ReleaseRequest) (string, error
 		return "", err
 	}
 
-	existingIndexFile := filepath.Join(tempdir, "plugins", krew.PluginFileName(request.PluginName))
+	existingIndexFile := filepath.Join(tempdir, "plugins", devctl.PluginFileName(request.PluginName))
 	logrus.Info("update plugin manifest with latest release info")
-	err = krew.ValidatePlugin(request.PluginName, newIndexFile.Name())
+	err = devctl.ValidatePlugin(request.PluginName, newIndexFile.Name())
 	if err != nil {
 		return "", fmt.Errorf("failed when validating plugin spec with error: %s", err.Error())
 	}

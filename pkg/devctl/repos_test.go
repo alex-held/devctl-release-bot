@@ -1,4 +1,4 @@
-package krew
+package devctl
 
 import (
 	"os"
@@ -15,14 +15,14 @@ func TestGetKrewIndexRepoName(t *testing.T) {
 	}{
 		{
 			name:     "env variable is not set",
-			expected: "krew-index",
+			expected: "devctl-index",
 		},
 		{
 			name: "env variable is set to empty value",
 			setup: func() {
 				os.Setenv("UPSTREAM_KREW_INDEX_REPO_NAME", "")
 			},
-			expected: "krew-index",
+			expected: "devctl-index",
 		},
 		{
 			name: "env variable is set to value",

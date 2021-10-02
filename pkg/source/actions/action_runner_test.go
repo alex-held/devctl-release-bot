@@ -90,7 +90,7 @@ func TestRunAction(t *testing.T) {
 					Reply(200).
 					BodyString("linux-amd64")
 			},
-			expectedError: `template: .krew.yaml:13:6: executing ".krew.yaml" at <addURIAndSha "https://github.com/foo-bar/my-awesome-plugin/releases/download/{{ .TagName }}/darwin-amd64-{{ .TagName }}.tar.gz" .TagName>: error calling addURIAndSha: downloading file https://github.com/foo-bar/my-awesome-plugin/releases/download/v0.0.2/darwin-amd64-v0.0.2.tar.gz failed. status code: 404, expected: 200`,
+			expectedError: `template: .devctl.yaml:13:6: executing ".devctl.yaml" at <addURIAndSha "https://github.com/foo-bar/my-awesome-plugin/releases/download/{{ .TagName }}/darwin-amd64-{{ .TagName }}.tar.gz" .TagName>: error calling addURIAndSha: downloading file https://github.com/foo-bar/my-awesome-plugin/releases/download/v0.0.2/darwin-amd64-v0.0.2.tar.gz failed. status code: 404, expected: 200`,
 		},
 		{
 			name: "release have assets",
@@ -110,10 +110,10 @@ func TestRunAction(t *testing.T) {
 					Reply(200).
 					BodyString("linux-amd64")
 
-				gock.New("https://krew-release-bot.rajatjindal.com").
+				gock.New("https://devctl-release-bot.rajatjindal.com").
 					Post("/github-action-webhook").
 					Reply(200).
-					JSON("PR https://github.com/kubernetes-sigs/krew-index/pull/26 opened successfully")
+					JSON("PR https://github.com/kubernetes-sigs/devctl-index/pull/26 opened successfully")
 
 			},
 		},

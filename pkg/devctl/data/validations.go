@@ -1,26 +1,26 @@
-package krew
+package devctl
 
 import (
 	"bytes"
 	"fmt"
 
-	"sigs.k8s.io/krew/pkg/index/indexscanner"
-	"sigs.k8s.io/krew/pkg/index/validation"
+	"github.com/alex-held/devctl/pkg/index/scanner"
+	"github.com/alex-held/devctl/pkg/index/validate"
 )
 
 //ValidatePlugin validates the plugin spec
 func ValidatePlugin(name, file string) error {
-	plugin, err := indexscanner.ReadPluginFile(file)
+	plugin, err := scanner.ReadPluginFile(file)
 	if err != nil {
 		return err
 	}
 
-	return validation.ValidatePlugin(name, plugin)
+	return validate.ValidatePlugin(name, plugin)
 }
 
-//GetPluginName gets the plugin name from template .krew.yaml file
+//GetPluginName gets the plugin name from template .devctl.yaml file
 func GetPluginName(spec []byte) (string, error) {
-	plugin, err := indexscanner.DecodePluginFile(bytes.NewReader(spec))
+	plugin, err := scanner.DecodePluginFile(bytes.NewReader(spec))
 	if err != nil {
 		return "", err
 	}

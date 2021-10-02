@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
+	"github.com/alex-held/devctl-release-bot/pkg/releaser"
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/rajatjindal/krew-release-bot/pkg/releaser"
 )
 
 func main() {

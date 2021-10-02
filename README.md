@@ -1,6 +1,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/cfd72dea-e22a-463b-8e20-5748b743140a/deploy-status)](https://app.netlify.com/sites/angry-borg-f9dd47/deploys)
 
-<a href="https://github.com/rajatjindal/devctl-release-bot"><img src="https://github.com/devctl-release-bot.png" width="100"></a><span width="10px">
+<a href="https://github.com/alex-held/devctl-release-bot"><img src="https://github.com/devctl-release-bot.png" width="100"></a><span width="10px">
 
 `devctl-release-bot` is a bot that automates the update of plugin manifests in `devctl-index` when a new version of your `kubectl` plugin is released.
 If a release is marked as a 'prerelease' in github, it will not be released to the devctl index.
@@ -10,7 +10,7 @@ To trigger `devctl-release-bot` you can use a `github-action` which sends the ev
 # Basic Setup
 
 - Make sure you have enabled github actions for your repo
-- Add a `.devctl.yaml` template file at the root of your repo. Refer to [kubectl-evict-pod](https://github.com/rajatjindal/kubectl-evict-pod) repo for an example.
+- Add a `.devctl.yaml` template file at the root of your repo. Refer to [kubectl-evict-pod](https://github.com/alex-held/kubectl-evict-pod) repo for an example.
   - you could use https://rajatjindal.com/tools/devctl-release-bot-helper/ for generating template for your plugin
 - To setup the action, add the following snippet after the step that publishes the new release and assets:
   ```yaml

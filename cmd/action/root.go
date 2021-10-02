@@ -9,8 +9,8 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "krew-release-bot",
-	Short: "krew-release-bot is a Github Action for updating plugin manifests in Krew Index repo",
+	Use:   "devctl-release-bot",
+	Short: "devctl-release-bot is a Github Action for updating plugin manifests in Krew Index repo",
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

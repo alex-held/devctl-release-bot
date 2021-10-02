@@ -1,4 +1,4 @@
-package krew
+package devctl
 
 import (
 	"io/ioutil"

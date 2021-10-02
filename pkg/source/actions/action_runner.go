@@ -10,9 +10,9 @@ import (
 	"os"
 	"time"
 
+	"github.com/alex-held/devctl-release-bot/pkg/cicd"
+	"github.com/alex-held/devctl-release-bot/pkg/source"
 	"github.com/google/go-github/v29/github"
-	"github.com/rajatjindal/krew-release-bot/pkg/cicd"
-	"github.com/rajatjindal/krew-release-bot/pkg/source"
 	"github.com/sirupsen/logrus"
 	"golang.org/x/oauth2"
 )
@@ -137,5 +137,5 @@ func getWebhookURL() string {
 		return os.Getenv("KREW_RELEASE_BOT_WEBHOOK_URL")
 	}
 
-	return "https://krew-release-bot.rajatjindal.com/github-action-webhook"
+	return "https://devctl-release-bot.rajatjindal.com/github-action-webhook"
 }
