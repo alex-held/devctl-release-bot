@@ -3,7 +3,7 @@ name: "devctl-release-bot"
 description: "automatically opens PR for upstream devctl-index repo when you publish new release of your awesome plugin"
 runs:
   using: "docker"
-  image: "docker://alex-held/devctl-release-bot:v0.0.41"
+  image: "docker://docker.io/alex-held/devctl-release-bot:v0.0.41"
 inputs:
   workdir:
     description: "Working directory, defaults to env.GITHUB_WORKSPACE"
